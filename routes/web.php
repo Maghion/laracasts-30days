@@ -8,16 +8,11 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
+//    $jobs = Job::with('employer')->get();
+//    return view('jobs', ['jobs' => $jobs]);
     return view('jobs', [
         'jobs' => Job::all()
     ]);
-});
-
-Route::get('/jobs-test', function () {
-    $jobs = Job::all();
-//    dd($jobs);
-//    dd($jobs[0]);
-    dd($jobs[0]->title . ' ' . $jobs[0]->salary);
 });
 
 Route::get('/jobs/{id}', function ($id) {
