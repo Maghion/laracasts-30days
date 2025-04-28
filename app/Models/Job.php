@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 // Created using `php artisan make:model Job` command
 class Job extends Model {
@@ -14,7 +15,7 @@ class Job extends Model {
     protected $fillable = ['employer_id', 'title', 'salary'];
     protected $guarded = [];
 
-    public function employer()
+    public function employer() : BelongsTo
     {
         return $this->belongsTo(Employer::class);
     }
@@ -23,4 +24,6 @@ class Job extends Model {
     {
         return $this->belongsToMany(Tag::class, foreignPivotKey: 'job_listing_id');
     }
+
+
 }
